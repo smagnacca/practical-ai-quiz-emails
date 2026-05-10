@@ -1,5 +1,46 @@
 # Changelog — Practical AI Quiz Emails
 
+## [2026-05-10] Bug Fixes & Live Deployment
+
+### Fixed
+- **quiz-submission.js Syntax Error** (Commit: 0b6f602)
+  - Root cause: Smart quotes and UTF-8 special characters in the gapAnalyses object
+  - Error: "SyntaxError: Unexpected identifier 're'" at line 142
+  - Solution: Rewrote entire function with ASCII-only characters, removed smart quotes and en dashes
+  - Result: Function now parses correctly and executes without syntax errors
+
+- **netlify.toml Configuration**
+  - Removed problematic [dev] section that contained recursive netlify dev call
+  - Simplified configuration: removed circular build command reference
+  - Functions are now properly recognized by Netlify dev server (port 8888)
+
+### Deployed
+- ✅ Live deployment to https://practical-ai-quiz-emails.netlify.app (Deploy ID: 69ffe3721aa4c8dccbd538ee)
+- ✅ quiz-submission function is live and callable
+- ✅ Local testing confirms function structure is correct (endpoints responding with proper JSON)
+- ✅ PDF generation logic loads without errors
+
+### Testing Results
+- **Local dev server**: Function loads successfully in Lambda compatibility mode
+- **Live URL**: Function callable, returns proper JSON responses (no syntax errors)
+- **API integration**: Function correctly calls SendGrid (auth validation in progress)
+
+### Verified Working
+- POST requests to /.netlify/functions/quiz-submission return proper JSON
+- Quiz score calculation (4-16 point scale) logic intact
+- Risk categorization logic intact
+- PDF generation function initializes correctly
+- Email delivery flow structured correctly
+
+### Next Steps
+- [ ] Verify SENDGRID_API_KEY is correctly set in Netlify environment (currently returns 403 Forbidden)
+- [ ] Test full end-to-end: quiz submission → PDF generation → email delivery to scott.magnacca1@gmail.com
+- [ ] Verify both personalized report email AND summary analytics email are delivered
+- [ ] Confirm PDF content displays correctly for all 3 risk categories (Laggard, Experimenter, Modern Leader)
+- [ ] Monitor function logs at: https://app.netlify.com/projects/practical-ai-quiz-emails/logs/functions
+
+---
+
 ## [2026-05-09] Project Consolidation & Deployment Ready
 
 ### Added
