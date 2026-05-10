@@ -1,5 +1,33 @@
 # Changelog — Practical AI Quiz Emails
 
+## [2026-05-09] Project Consolidation & Deployment Ready
+
+### Added
+- **Consolidated Single Project Structure**
+  - Merged PDF Report fulfillment system with HTML email templates into one unified project
+  - Eliminated duplicate worktrees (`vigorous-panini-9dee9e` archived, `hardcore-northcutt-016c10` merged to main)
+  - All 5 HTML email templates (1-5) now coexist with serverless PDF report system in same project
+
+- **Unified Asset Organization**
+  - `assets/emails/` — all 5 quiz funnel emails (Email_1_Quiz_Hook.html through Email_5_Final_CTA_Quiz.html)
+  - `assets/AI-SELLING-READINESS-REPORT-TEMPLATE.md` — 2-page report template for 3 risk categories
+  - `netlify/functions/quiz-submission.js` — serverless report generation + SendGrid integration
+
+### Changed
+- **Git Structure**: Cleaned up embedded worktree references, consolidated branches to main
+- **Project Clarity**: Single "Practical AI Quiz Emails" Code project now serves as central hub for:
+  - Email funnel campaigns (driving quiz traffic)
+  - Post-quiz PDF report delivery (capturing & converting leads)
+  - SendGrid integration for both workflows
+  - Netlify serverless backend
+
+### Ready For
+- ✅ Deploy to Netlify with SENDGRID_API_KEY environment variable
+- ✅ End-to-end testing (local dev, quiz submission flow, email delivery)
+- ✅ Send 5-email sequence to leads with report follow-up automation
+
+---
+
 ## [2026-05-09] Post-Quiz PDF Report Fulfillment System
 
 ### Added
