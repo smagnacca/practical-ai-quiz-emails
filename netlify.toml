@@ -1,0 +1,13 @@
+[build]
+  command = "echo 'Build complete'"
+  publish = "/"
+  functions = "netlify/functions"
+
+[dev]
+  command = "npm install && netlify dev"
+  port = 3000
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
